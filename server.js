@@ -6,6 +6,9 @@ const nunjucks = require('nunjucks')
 // Chamar as rotas
 const routes = require('./routes')
 
+// Chamar o method override
+const methodOverride = require('method-override')
+
 // Criar o servidor
 const server = express()
 
@@ -15,6 +18,7 @@ server.use(express.urlencoded({ extended: true }))
 // Arquivos estáticos da pasta public
 server.use(express.static('public'))
 
+server.use(methodOverride('_method'))
 server.use(routes)
 
 // Setar a view engine
